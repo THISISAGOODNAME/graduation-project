@@ -88,8 +88,8 @@
                     “<b>互联网</b><b style="color: #f00">+</b>”和
                     “<b>工业</b><b style="color: #f00">4.0</b>”的概念。
                     全世界进入了移动互联网的时代。而在移动互联网时代，大量基于C/S的传统软件变为了遗留系统。
-                    这些遗留系统在向web环境进行移植过程中，需要花费巨大的人力和物力，如何有效的进行软件一直工作，
-                    一直存在普遍的问题
+                    这些遗留系统在向web环境进行移植过程中，需要花费巨大的人力和物力，如何有效的进行软件移植工作，
+                    一直存在普遍的问题。
                 </script>
             </section>
 
@@ -104,7 +104,7 @@
                     它是一个分布式、开放、适用性强、高性能、端到端的平台;它使企业利用技术获取竞争优势。
                     但是，很多企业可能并没有那么多人力物力来重新进行web版的编写，如果能有一种技术，
                     既能使用传统软件的源代码，直接生成web版的应用，或者能生成关键模块，简化web应用的开发过程，
-                    对于企业的发展极为有用
+                    对于企业的发展极为有用。
                 </script>
             </section>
 
@@ -112,7 +112,7 @@
                 <script type="text/template">
                     ### <b>3、</b> 研究的目的
 
-                    为传统软件或者程序类库移植到web上寻求一个切实可行的方案
+                    为传统软件或程序类库移植到web上寻求一个切实可行的方案。
                 </script>
             </section>
         </section>
@@ -146,8 +146,8 @@
                 <script type="text/template">
                     #### <b>2.1、</b> Microsoft IE ActiveX
 
-                    - 优点:微软的ActiveX历史悠久，可以使用大量win32 api，对于windows软件移植代码量改动最小，几乎没有性能损失。
-                    - 缺点：需要安装插件，没认真过的插件会被大多数安全软件拦截，并且只支持windows系统，不能应用于移动web
+                    - 优点:微软的ActiveX历史悠久，可以使用大量win32 api，对于windows软件移植代码量改动最小，几乎没有性能损失；
+                    - 缺点：需要安装插件，没认真过的插件会被大多数安全软件拦截，并且只支持windows系统，不能应用于移动web。
                 </script>
             </section>
 
@@ -155,8 +155,8 @@
                 <script type="text/template">
                     #### <b>2.2、</b> Sun Java JNI
 
-                    - 优点：支持多种平台，浏览器兼容性好。
-                    - 缺点：操作系统跨平台需要额外工作，为每个平台编译一个Native版本，需要目标平台安装Java且开启浏览器支持
+                    - 优点：支持多种平台，浏览器兼容性好；
+                    - 缺点：操作系统跨平台需要额外工作，为每个平台编译一个Native版本，需要目标平台安装Java且开启浏览器支持。
                 </script>
             </section>
 
@@ -164,8 +164,8 @@
                 <script type="text/template">
                     #### <b>2.3、</b> Adobe FlasCC
 
-                    - 优点：平台兼容性比较好，而且swf文件可以脱离浏览器单独运行。
-                    - 缺点：目标机需要安装flash player，移动设备现在大都不安装flash player，而且渲染器需要重写，价格高昂，编译过程非常缓慢
+                    - 优点：平台兼容性比较好，而且swf文件可以脱离浏览器单独运行；
+                    - 缺点：目标机需要安装flash player，移动设备现在大都不安装flash player，而且渲染器需要重写，价格高昂，编译过程非常缓慢。
                 </script>
             </section>
 
@@ -173,8 +173,8 @@
                 <script type="text/template">
                     #### <b>2.4、</b> Google Native Client
 
-                    - 优点：与Native性能差距不大，平台兼容性好。
-                    - 缺点：只支持chrome浏览器
+                    - 优点：与Native性能差距不大，平台兼容性好；
+                    - 缺点：只支持chrome浏览器。
                 </script>
             </section>
 
@@ -182,8 +182,8 @@
                 <script type="text/template">
                     #### <b>2.5、</b> Leaning Technologies Duetto
 
-                    - 优点：既可以将C++代码用于web应用的生成，也可以通过生成node.js脚本用于后端开发，利用javascript的JIT，性能高。
-                    - 缺点：使用LGPL协议发布，商业不友好
+                    - 优点：既可以将C++代码用于web应用的生成，也可以通过生成node.js脚本用于后端开发，利用javascript的JIT，性能高；
+                    - 缺点：使用LGPL协议发布，商业不友好。
                 </script>
             </section>
 
@@ -191,8 +191,8 @@
                 <script type="text/template">
                     #### <b>2.6、</b> Mozilla Emscripten
 
-                    - 优点：基于llvm+clang，可以使用c++全部特性，依靠asm.js，将javascript直接解释为汇编代码运行，个别测试效率超越C++，支持openGL程序直接转变为webGL程序。
-                    - 缺点：编译过程缓慢，编译是会将c++的类库一起静态编译到javascript文件中，导致javascript文件容量变大
+                    - 优点：基于llvm+clang，可以使用c++全部特性，依靠asm.js，将javascript直接解释为汇编代码运行，个别测试效率超越C++，支持openGL程序直接转变为webGL程序；
+                    - 缺点：编译过程缓慢，编译是会将c++的类库一起静态编译到javascript文件中，导致javascript文件容量变大。
                 </script>
             </section>
         </section>
@@ -252,7 +252,7 @@
                     ### <b>1、</b>clang
 
                     clang是一个C语言、C++、Objective-C、Objective-C++语言的轻量级编译器。
-                    源代码发以BSD协议开源。兼容GCC，但又更快的编译速度和更小的内存占用，诊断功能也更加强大
+                    源代码发以BSD协议开源。兼容GCC，但又更快的编译速度和更小的内存占用，诊断功能也更加强大。
                 </script>
             </section>
 
@@ -263,7 +263,7 @@
                     LLVM是构架编译器(compiler)的框架系统，以C++编写而成，
                     用于优化以任意程序语言编写的程序的编译时间(compile-time)、
                     链接时间(link-time)、运行时间(run-time)以及空闲时间(idle-time)，
-                    对开发者保持开放，并兼容已有脚本
+                    对开发者保持开放，并兼容已有脚本。
                 </script>
             </section>
 
@@ -275,7 +275,7 @@
                     make的思路很简单：当你改变了源文件并想重新构建程序或者其他的输出文件时，
                     make检查时间戳看哪些改变了，并按要求重新构建这些文件，而不需要浪费时间重新构建其他文件。
                     但是在这个基本的原则之上，make提供了丰富的选项集合，让你能够操作多个目录，
-                    为不同平台构建不同的版本，能够以其他的方式定制你的构建过程
+                    为不同平台构建不同的版本，能够以其他的方式定制你的构建过程。
                 </script>
             </section>
 
@@ -285,7 +285,7 @@
 
                     makefile是make命令的配置文件。makefile定义了一系列的规则来指定，
                     哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，
-                    甚至于进行更复杂的功能操作，因为 makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令
+                    甚至于进行更复杂的功能操作，因为 makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。
                 </script>
             </section>
 
@@ -295,7 +295,7 @@
 
                     Web IDL（Interface Definition Language，接口定义语言）该规范定义了一个OMG IDL 3.0的语法子集，
                     用来规范定义的接口。Web IDL 是一个具有多种功能的IDL 变量，便于规范Web平台中的常用脚本对象的操作。
-                    其中包括了大量的扩展功能，以及捆绑了针对ECMAScript 3rd Edition 和Java的语言工具
+                    其中包括了大量的扩展功能，以及捆绑了针对ECMAScript 3rd Edition 和Java的语言工具。
                 </script>
             </section>
 
@@ -306,7 +306,7 @@
                     asm.js是一个JavaScript的一个严格的子集，可以被用来作为一个底层的、高效的编译器目标语言。
                     asm.js提供了一个类似于C/C++虚拟机的抽象实现，包括一个可有效负载和存储的大型二进制堆、
                     整型和浮点运算、高阶函数定义、函数指针等。Mozilla还展示了一项基准测试数据，
-                    结果显示，Firefox+asm.js的执行速度仅次于本地应用
+                    结果显示，Firefox+asm.js的执行速度仅次于本地应用。
                 </script>
             </section>
         </section>
@@ -314,7 +314,7 @@
         <section>
             <section data-markdown>
                 <script type="text/template">
-                    ## <b>Part IV</b> <b>:</b> 工作内容
+                    ## <b>Part IV</b> <b>:</b> 研究内容与技术方案
                 </script>
             </section>
 
@@ -322,9 +322,9 @@
                 <script type="text/template">
                     ### <b>1、</b>研究make和makefile
 
-                    1. 在研究现有的c/c++工程时，看懂现有工程是最基础的，makefile是首先要攻克的难关
-                    2. make是一个命令工具，它解释Makefile 中的指令（应该说是规则）。在Makefile文件中描述了整个工程所有文件的编译顺序、编译规则。Makefile 有自己的书写格式、关键字、函数。像C 语言有自己的格式、关键字和函数一样。而且在Makefile 中可以使用系统shell所提供的任何命令来完成想要的工作。Makefile（在其它的系统上可能是另外的文件名）在绝大多数的IDE 开发环境中都在使用，已经成为一种工程的编译方法。
-                    3. 会使用makefile构建自动化工作流
+                    1. 在研究现有的c/c++工程时，看懂现有工程是最基础的，makefile是首先要攻克的难关；
+                    2. make是一个命令工具，它解释Makefile 中的指令（应该说是规则）。在Makefile文件中描述了整个工程所有文件的编译顺序、编译规则。Makefile 有自己的书写格式、关键字、函数。像C 语言有自己的格式、关键字和函数一样。而且在Makefile 中可以使用系统shell所提供的任何命令来完成想要的工作。Makefile（在其它的系统上可能是另外的文件名）在绝大多数的IDE 开发环境中都在使用，已经成为一种工程的编译方法；
+                    3. 会使用makefile构建自动化工作流。
                 </script>
             </section>
 
@@ -332,9 +332,9 @@
                 <script type="text/template">
                     ### <b>2、</b> 研究webIDL
 
-                    1. 接口定义语言是一种胶水语言，用来将多种语言混合开发时，统一对外暴露的接口。
-                    2. 多语言混合开发本来也是软件开发的一个难点，而且也是自己开发时较少涉及的
-                    3. 开发时的API设计也需要考虑,以后编写新的C++工程时可以尽可能适合移植
+                    1. 接口定义语言是一种胶水语言，用来将多种语言混合开发时，统一对外暴露的接口；
+                    2. 多语言混合开发本来也是软件开发的一个难点，而且也是自己开发时较少涉及的；
+                    3. 开发时的API设计也需要考虑,以后编写新的C++工程时可以尽可能适合移植。
                 </script>
             </section>
 
@@ -342,22 +342,33 @@
                 <script type="text/template">
                     ### <b>3、</b> 研究emscripten 特有的 API
 
-                    1. emscripten.h : 用来像在C++中嵌入C代码一样的嵌入javascript代码
-                    2. html5.h : 用来操作DOM，调用浏览器功能，与网页中元素进行互操作
-                    3. preamble.js : 在网页中调用，之后可以调用C++代码中的方法
-                    4. val.h(开发不完全) : 将javascript代码变成C++代码
-                    5. bind.h : 调整函数接口
-                    6. trace.h : 用来调试
-                    7. 什么代码需要重写，什么代码不需要重写，工程文件修改多少，都是研究的难点
+                    1. emscripten.h : 用来像在C++中嵌入C代码一样的嵌入javascript代码；
+                    2. html5.h : 用来操作DOM，调用浏览器功能，与网页中元素进行互操作；
+                    3. preamble.js : 在网页中调用，之后可以调用C++代码中的方法；
+                    4. val.h(开发不完全) : 将javascript代码变成C++代码；
+                    5. bind.h : 调整函数接口；
+                    6. trace.h : 用来调试；
+                    7. 什么代码需要重写，什么代码不需要重写，工程文件修改多少，都是研究的难点。
                 </script>
             </section>
 
             <section data-markdown>
                 <script type="text/template">
-                    ### <b>4、</b> 设计设计一个传统软件向web移植的工作流
+                    ### <b>4、</b> 设计一个传统软件向web移植的工作流
 
-                    1. 通过几个特征性的框架和类库的移植研究，提取通用的移植过程
-                    2. 将过程抽象成一个通用的工作流
+                    1. 通过几个特征性的框架和类库的移植研究，提取通用的移植过程；
+                    2. 将过程抽象成一个通用的工作流。
+                </script>
+            </section>
+            
+            <section data-markdown>
+                <script type="text/template">
+                    ### <b>5、</b> 移植的应用实例
+
+                    1. Meshlab : 开源网格处理软件；
+                    2. Bullet Physics Engine : 开源物理引擎； 
+                    3. luaVM : lua语言的虚拟机(运行环境)；
+                    4. SQLite : 开源数据库。
                 </script>
             </section>
         </section>
@@ -365,7 +376,7 @@
         <section>
             <h3>但是Emscripten只是<b>能</b>把c++编译成JavaScript :</h3>
             <br>
-            <p class="fragment">我们只证明了C++有向javascript移植的能力:</p>
+            <p class="fragment">我们只证明了C++有向javascript移植的能力</p>
             <p class="fragment">并不足以证明,传统软件可以轻易的完成向web的移植</p>
             <p class="fragment">我的研究课题,就是给<strong>传统软件向web移植</strong>寻找一个可行的通用的方法</p>
         </section>
@@ -375,7 +386,7 @@
                 ## <b>Part V</b> <b>:</b> 毕设最终目标
 
                 移植有代表性的软件和类库，软件在web上正常运行，类库可以作为javascript的类库，
-                直接被javascript引用，用于web开发。能编写自己的移植脚本，能为传统软件的移植提出意见
+                直接被javascript引用，用于web开发。能编写自己的移植脚本，能为传统软件的移植提出意见。
             </script>
         </section>
 
