@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>Graduation-project by THISISAGOODNAME</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <style>
+        h2 b {
+            color : #048;
+        }
+
+        h3 b {
+            color : #369;
+        }
+
+        b {
+            color : #63a;
+        }
+
+        strong {
+            color : #c11;
+        }
+
+        #wrap {
+            width : 600px;
+            margin : 0 auto;
+        }
+
+        #left_col {
+            float : left;
+            width : 300px;
+        }
+
+        #right_col {
+            float : right;
+            width : 300px;
+        }
+
+        .reveal section img {
+            border: none;
+        }
+    </style>
+    
+</head>
+<body>
+
+<div class="reveal">
+    <div class="slides">
+
+        <!--封面-->
+        <section data-markdown>
+            <script type="text/template">
+                ## <b>基于</b><b style="color: #f00">Emscripten</b><b>的传统软件 Web 移植</b>
+
+                <br>
+                姓名: <b>杨彦君</b>
+
+                学号: <b>12061040</b>
+
+                指导教师: <b>吴壮志</b>
+            </script>
+        </section>
+
+        <!--研究的目的和意义-->
+        <section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## <b>Part I</b> <b>:</b> 研究的目的和意义
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ### <b>1、</b>研究的背景
+
+                    面对人们日益加剧的信息分享和获取的需求，硬件方面智能终端设备也在不断的推陈出新，而同样的，
+                    在软件方面，移动互联网也逐渐渗透到各行各业当中，产生了
+                    “<b>互联网</b><b style="color: #f00">+</b>”和
+                    “<b>工业</b><b style="color: #f00">4.0</b>”的概念。
+                    全世界进入了移动互联网的时代。而在移动互联网时代，大量基于C/S的传统软件变为了遗留系统。
+                    这些遗留系统在向web环境进行移植过程中，需要花费巨大的人力和物力，如何有效的进行软件移植工作，
+                    一直存在普遍的问题。
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ### <b>2、</b> 研究的意义
+
+                    从90年代开始,客户机/服务器(Client/Server,以下简称为C/S)结构代替了原来的
+                    主机/终端(Host/Terminal)结构,并且在整个IT发展中发挥了巨大的作用。
+                    但随着Interne t的不断普及和应用的迅速升级,C/S的应用感到有些力不从心。
+                    而Web平台是一个调度任务集中的、以客户为中心的应用程序平台;
+                    它是一个分布式、开放、适用性强、高性能、端到端的平台;它使企业利用技术获取竞争优势。
+                    但是，很多企业可能并没有那么多人力物力来重新进行web版的编写，如果能有一种技术，
+                    既能使用传统软件的源代码，直接生成web版的应用，或者能生成关键模块，简化web应用的开发过程，
+                    对于企业的发展极为有用。
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ### <b>3、</b> 研究的目的
+
+                    为传统软件或程序类库移植到web上寻求一个切实可行的方案。
+                </script>
+            </section>
+        </section>
+
+        <!--国内外研究现状-->
+        <section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## <b>Part II</b> <b>:</b> 研究现状
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ### <b>1、</b> 国内研究现状
+
+                    国内对这项技术研究的程度是比较低的，在本文调研时，众多企业中，
+                    仅有北京触控科技一家公司在产品cocos2dx 2.x的版本中，
+                    使用了emscripten编译器将cocos2dx的游戏编译成html5版本，
+                    但是在cocos2dx 3.x的版本中，将该功能废止，推出了更适合html5开发者的cocos2d-js。
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ### <b>2、</b> 国外研究现状
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    #### <b>2.1、</b> Microsoft IE ActiveX
+
+                    - 优点:微软的ActiveX历史悠久，可以使用大量win32 api，对于windows软件移植代码量改动最小，几乎没有性能损失；
+                    - 缺点：需要安装插件，没认真过的插件会被大多数安全软件拦截，并且只支持windows系统，不能应用于移动web。
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    #### <b>2.2、</b> Sun Java JNI
+
+                    - 优点：支持多种平台，浏览器兼容性好；
+                    - 缺点：操作系统跨平台需要额外工作，为每个平台编译一个Native版本，需要目标平台安装Java且开启浏览器支持。
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    #### <b>2.3、</b> Adobe FlasCC
+
+                    - 优点：平台兼容性比较好，而且swf文件可以脱离浏览器单独运行；
+                    - 缺点：目标机需要安装flash player，移动设备现在大都不安装flash player，而且渲染器需要重写，价格高昂，编译过程非常缓慢。
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    #### <b>2.4、</b> Google Native Client
+
+                    - 优点：与Native性能差距不大，平台兼容性好；
+                    - 缺点：只支持chrome浏览器。
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    #### <b>2.5、</b> Leaning Technologies Duetto
+
+                    - 优点：既可以将C++代码用于web应用的生成，也可以通过生成node.js脚本用于后端开发，利用javascript的JIT，性能高；
+                    - 缺点：使用LGPL协议发布，商业不友好。
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    #### <b>2.6、</b> Mozilla Emscripten
+
+                    - 优点：基于llvm+clang，可以使用c++全部特性，依靠asm.js，将javascript直接解释为汇编代码运行，个别测试效率超越C++，支持openGL程序直接转变为webGL程序；
+                    - 缺点：编译过程缓慢，编译是会将c++的类库一起静态编译到javascript文件中，导致javascript文件容量变大。
+                </script>
+            </section>
+        </section>
+
+        <!--原计划目标-->
+        <section data-markdown>
+            <script type="text/template">
+                ## <b>PART III</b> <b>:</b>开题时计划完成的目标
+
+                1. Meshlab : 开源网格处理软件；
+                2. Bullet Physics Engine : 开源物理引擎；
+                3. luaVM : lua语言的虚拟机(运行环境)；
+                4. SQLite : 开源数据库。
+            </script>
+        </section>
+
+        <!--实际完成情况-->
+        <section data-markdown>
+            <script type="text/template">
+                ## <b>PART V</b> <b>:</b> 实际完成工作
+
+                1. 剖析 emscripten 的工具的作用
+                2. 移植 luaVM 到 html5,并实现一个纯前端的 lua 交互式解释器。
+                3. 移植 SQLite 到 html5,并实现数据库CURD
+                4. 移植 box2d 物理引擎到 html5,并在 canvas 中使用。
+                5. 移植 bullet 物理引擎到 html5,并在 webgl 中进行使用。
+            </script>
+        </section>
+
+        <!--emscripten工作流-->
+        <section>
+            <section>
+                <h3><b>PART V:</b>emscripten的使用方法</h3>
+                <a href="http://emscripten.org"><img src="images/emscripten_switch_logo.png"></a>
+                <br>
+                <p class="fragment">开源的 C++ to JavaScript 编译器</p>
+                <br>
+                <p  class="fragment" style="background-color: black; padding: 1em; box-shadow: 8px 8px 8px rgba(0,0,0,0.6)"><b style="color: #f42">C++</b>&nbsp&nbsp<b style="color: #fff">&rArr;</b>&nbsp&nbsp<b style="color: #7af">LLVM</b>&nbsp&nbsp<b style="color: #fff">&rArr;</b>&nbsp&nbsp<b style="color: #8f5">Emscripten</b>&nbsp&nbsp<b style="color: #fff">&rArr;</b>&nbsp&nbsp<b style="color: #f58">JavaScript</b></p>
+            </section>
+
+            <section>
+                <h3><b>C++ 编译成 JavaScript</b></h3>
+                <p>传统C++代码</p>
+            <pre  class="fragment"><code>
+                // hello.cpp
+                #include &lt;iostream&gt;
+                int main() {
+                    std::cout << "hello, world!" << std::endl;
+                }
+            </code></pre>
+                <br>
+                <p  class="fragment">C++代码编译和运行过程</p>
+            <pre  class="fragment"><code>
+                $ g++ hello.cpp -o a.out
+                $ ./a.out
+                hello, world!
+            </code></pre>
+            </section>
+
+            <section>
+                <p>使用<b>Emscripten</b>把c++编译成JavaScript :</p>
+            <pre class="fragment"><code>
+                $ em++ hello.cpp -o a.html
+                $ firefox a.html # or any other browser
+            </code></pre>
+                <br>
+                <p class="fragment">你会得到这样的网页:</p>
+                <iframe class="fragment" src="demos/a.html" width="80%" scrolling=no></iframe>
+                <br><br>
+                <p class="fragment"><strong>emcc, em++</strong> 替换原有的C/C++编译器</p>
+            </section>
+        </section>
+
+        <!--emscripten移植代码分析-->
+        <section>
+            <section>
+                <h2><b>PART VI:</b>emscripten源代码移植过程</h2>
+
+                <p style="background-color: black; padding: 1em; box-shadow: 8px 8px 8px rgba(0,0,0,0.6)"><b style="color: #f42">C++</b>&nbsp&nbsp<b style="color: #fff">&rArr;</b>&nbsp&nbsp<b style="color: #7af">LLVM</b>&nbsp&nbsp<b style="color: #fff">&rArr;</b>&nbsp&nbsp<b style="color: #8f5">Emscripten</b>&nbsp&nbsp<b style="color: #fff">&rArr;</b>&nbsp&nbsp<b style="color: #f58">JavaScript</b></p>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    以Hello world程序为例
+
+                    ```
+                    #include <stdio.h>
+                    int main() {
+                        printf(”Hello, world!”);
+                        return 0;
+                    }
+                    ```
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    经过clang,编译成llvm字节码
+
+                    ```
+                    @.str = private unnamed_addr constant [15 x i8]
+                                c"hello, world!\0A\00", align 1
+                    define i32 @main() {
+                        entry:
+                            %retval = alloca i32, align 4
+                            call i32 (i8*, ...)* @printf(i8* getelementptr
+                                inbounds ([15 x i8]* @.str, i32 0, i32 0))
+                            store i32 0, i32* %retval
+                            ret i32 %retval
+                    }
+                    ```
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    字节码结构调整
+
+                    ```
+                    define i32 @main() {
+                        entry:
+                            %retval = alloca i32,
+                                    align 4
+                            call i32 (i8*, ...)*
+                                    @printf (..)
+                            store i32 0, i32*
+                                    %retval
+                            ret i32 %retval
+                    }
+                    ```
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    由该字节码生成的代码如下
+
+                    ```
+                    function _main() {
+                        var _retval;
+                        _printf (..);
+                        _retval = 0;
+                        return _retval;
+                    }
+                    ```
+                </script>
+            </section>
+        </section>
+
+        <!--实例部分-->
+        <section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## <b>PART VII</b> <b>:</b> 完成移植的软件以及展示
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ### <b>Lua虚拟机</b>
+
+                    Lua 是一个小巧的脚本语言。由巴西里约热内卢天主教大学的Roberto Ierusalimschy、Waldemar Celes 和 Luiz Henrique de Figueiredo 所组成并于 1993 年开发。
+
+                    本人实现了一个前端运行的Lua交互式解释器,
+                    具体效果可以见[这里](demos/lua-REPL/repl.html)。
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ### <b>SQLite数据库</b>
+
+                    SQLite 是一款轻量、高速的可嵌入式数据库。
+
+                    本人实现了一个前端运行的SQLite交互式解释器,
+                    具体效果可以见[这里](demos/SQLite/index.html)。
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ### <b>Box2d物理引擎</b>
+
+                    Box2D是一个完全由C++实现的开源物理引擎,可以模拟变速、摩擦、碰撞等物理效果。
+
+                    本人移植了box2d引擎,并在webgl中使用box2d模拟随机坠落效果,
+                    具体效果可以见[这里](demos/box2d/box2d.html)。
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ### <b>Bullet物理引擎</b>
+
+                    Bullet引擎是一个开源的三维物理模拟引擎,世界三大三维物理引擎之一。广泛应用于游戏开发和影视制作中。
+
+                    本人移植了Bullet引擎,并在webgl中使用Bullet模拟如下几个效果:
+                    1. [重力+刚体碰撞](demos/bullet/webgl_demo/ammo.html)
+                    2. [布料](demos/bullet/webgl_demo_softbody_cloth/)
+                    3. [绳索](demos/bullet/webgl_demo_softbody_rope/)
+                    4. [水袋](demos/bullet/webgl_demo_softbody_volume/)
+                    5. [重力+刚体碰撞+地形](demos/bullet/webgl_demo_terrain/)
+                    6. [车轮模拟](demos/bullet/car/)
+                </script>
+            </section>
+
+        </section>
+
+        <!--替我部分-->
+        <section>
+            <h2><b style="color: #f00">谢谢大家</b></h2>
+            <br>
+            <br>
+            <p class="fragment">欢迎提问</p>
+        </section>
+    </div>
+</div>
+
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
+
+<script>
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: 'beige',
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'plugin/zoom-js/zoom.js', async: true},
+            {src: 'plugin/notes/notes.js', async: true}
+        ]
+    });
+</script>
+
+</body>
+</html>
